@@ -6,4 +6,6 @@ export default defineNuxtConfig({
   alias: {
     '@': resolve(__dirname, "/")
   },
+  plugins: [
+  ],
 })

@@ -1,170 +1,125 @@
 <template>
-    <div class="top-nav">
-        <a href="#showcase">Projekte</a>
-        <a href="#contact">Kontakt</a>
-      </div>
-  
-      <div class="header">
-        <h1 id="name">Jässin Aouani</h1>
-        <h4 class="text-secondary">Schüler</h4>
-        <div class="social-links">
-          <a href="https://github.com/probablyjassin"
-            ><i class="fab fa-github"></i
-          ></a>
-        </div>
-        <a id="scroll-down-btn" href="#about" class="scroll-down-btn">
-          <i class="fas fa-chevron-down"></i>
-        </a>
-        <a id="scroll-up-btn" href="#" class="scroll-up-btn">
-          <i class="fas fa-chevron-up"></i>
-        </a>
-      </div>
-  
-      <div class="about-section">
+  <div class="top-nav">
+    <a href="#showcase">hier kann ein Link hin</a>
+    <a href="#contact">sogar zwei oder mehr</a>
+  </div>
+
+  <div class="header">
+    <h1 id="name">Max-Klinger-Schulclub</h1>
+    <h4 class="text-secondary">wow</h4>
+    <div class="social-links">
+      <a href="https://github.com/probablyjassin"
+        ><i class="fab fa-github"></i
+      ></a>
+    </div>
+    <a id="scroll-down-btn" href="#about" class="scroll-down-btn">
+      <i class="fas fa-chevron-down"></i>
+    </a>
+    <a id="scroll-up-btn" href="#" class="scroll-up-btn">
+      <i class="fas fa-chevron-up"></i>
+    </a>
+  </div>
+
+  <!-- <div class="about-section">
         <div class="container">
           <div class="row">
             <div class="col-md-6">
-              <h2 id="about" class="fw-bold">Über mich</h2>
+              <h2 id="about" class="fw-bold">heading</h2>
               <p>
-                Hallo! Ich bin Jässin Aouani, Schüler des Max-Klinger-Gymnasiums
-                in Leipzig. Ich absolviere das Abitur im Juni
-                2024. Hier auf meiner Website sind mein Lebenslauf und meine Projekte zu finden.
+                info lorem ipsum 
               </p>
             </div>
             <div class="col-md-6">
               <div class="custom-left-indent">
                 <p><i class="fas fa-calendar"></i> 17</p>
                 <p>
-                  <i class="fas fa-icons"></i> Informatik, Sprachen, Musik, Schach
+                  <i class="fas fa-icons"></i> zeug
                 </p>
-                <p><i class="fas fa-map-marker-alt"></i> Leipzig, Deutschland</p>
-                <a href="./files/Lebenslauf.pdf" class="btn btn-danger">Lebenslauf herunterladen</a>
+                <p><i class="fas fa-map-marker-alt"></i> ort</p>
+                <a href=".#" class="btn btn-danger">download button</a>
               </div>
             </div>
           </div>
         </div>
+      </div> -->
+
+  <div id="showcase" class="section-showcase">
+    <div class="container">
+      <div class="col-md-12 text-center">
+        <h1 class="fw-bold">Zeitungsarchiv</h1>
       </div>
-  
-      <div id="showcase" class="section-showcase">
-        <div class="container">
-          <div class="col-md-12 text-center">
-            <h1 class="fw-bold">Projekte</h1>
-          </div>
-        </div>
-        <div class="container">
+    </div>
+
+    <div v-for="(ausgabe, index) in newspapers">
+      <div class="container">
+        <div v-if="index % 2 == 0">
           <div class="row">
-            <div class="col-md-6 move">
-              <p class="text-small text-warning">Adobe InDesign</p>
-              <h1 class="fw-bold">Layout des "Klinger-Express"</h1>
-              <h4 class="fw-bold text-secondary">
-                Die Schülerzeitung der Max-Klinger-Schule
-              </h4>
-              <p class="text-normal">
-                Seit 2022 nehme nehme ich an der Redaktion des Schulclubs teil, wo
-                ich mithilfe von Adobe InDesign das Layout der Zeitung erstelle
-                und mit der Chefredaktion die Zeitung finalisiere, sowie Artikel und Beiträge verfasse.
-              </p>
-            </div>
-            <div class="col-md-6">
-              <img src="images/undertale.webp" alt="Image 1" />
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <img src="images/seventv.webp" alt="Image 1" />
-            </div>
-            <div class="col-md-6 mt-3 move">
-              <p class="text-small text-warning">Python</p>
-              <h1 class="fw-bold">seventv.py</h1>
-              <h4 class="fw-bold text-secondary">API-Wrapper für 7tv.app</h4>
-              <p class="text-normal">
-                Programmieren eines API-Wrappers, der es einfacher macht, den Service 7tv für Twitch-Emotes mit Python abzurufen. <br>
-                <a href="https://github.com/probablyjassin/seventv.py">Zum Github Repository</a> 
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 mt-3 move">
-              <p class="text-small text-warning">HTML / CSS / JavaScript / Vue.js</p>
-              <h2 class="fw-bold">[Work in Progress]</h2>
-              <h1 class="fw-bold">MKC Webshop </h1>
-              <h4 class="fw-bold text-secondary">Zukünftiger Merch-Webshop des Max-Klinger-Schulclubs</h4>
-              <p class="text-normal">
-                Um das Erstellen von Bestellformularen für den Merch unserer Schule zu verbessern, bin ich für das Frontend des neuen Webshops zuständig. 
-                Dieses erstelle ich mit Vue.js als dynamische Single-Page-Application.
-              </p>
-            </div>
-            <div class="col-md-6">
-              <img src="images/webshop.webp" alt="Image 1" />
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <img src="images/gaugedle.webp" alt="Image 1" />
-            </div>
-            <div class="col-md-6 mt-3 move">
-              <p class="text-small text-warning">HTML / CSS / JavaScript</p>
-              <h1 class="fw-bold">Wordle-ähnliches Quiz-Spiel</h1>
-              <h4 class="fw-bold text-secondary">Persönliches Projekt</h4>
-              <p class="text-normal">
-                Erstellen eines auf einem Videospiel basierenden Quiz-Spiels,
-                inspiriert von dem populären Wordguessing-Game "Wordle".
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 mt-3 move">
-              <p class="text-small text-warning">Blender</p>
-              <h1 class="fw-bold">3D Modell eines Schachbretts</h1>
-              <h4 class="fw-bold text-secondary">Junior Ingenieur Akademie</h4>
-              <p class="text-normal">
-                Designen und 3D-Modellieren eines akkuraten Schachbretts mit
-                Figuren, sowie einer dazugehörigen Schachuhr.
-              </p>
-            </div>
-            <div class="col-md-6">
-              <img src="images/ChessBoard1080Front.webp" alt="Image 1" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="about-section">
-        <div class="container">
-          <div class="row">
-            <h1 id="contact" class="fw-bold">Kontakt</h1>
             <div class="col-md-6 mt-3">
-              <a href="mailto:jassin@aouani.de" class="text-info"
-                ><i class="fas fa-envelope"></i> jassin@aouani.de</a
+              <p class="text-small text-warning">{{ ausgabe.title }}</p>
+              <h1 class="fw-bold">{{ ausgabe.topic }}</h1>
+              <h4 class="fw-bold text-secondary">{{ ausgabe.releaseDate }}</h4>
+              <p class="text-normal">
+                {{ ausgabe.description }}
+              </p>
+              <NuxtLink :to="`/${ausgabe.title}`">balls</NuxtLink>
+            </div>
+            <div class="col-md-6">
+              <img src="../assets/example.jpg" alt="Image 1" />
+            </div>
+          </div>
+        </div>
+
+        <div v-else>
+          <div class="row">
+            <div class="col-md-6">
+              <img src="../assets/example.jpg" alt="Image 1" />
+            </div>
+            <div class="col-md-6 mt-3">
+              <p class="text-small text-warning">{{ ausgabe.title }}</p>
+              <h1 class="fw-bold">{{ ausgabe.topic }}</h1>
+              <h4 class="fw-bold text-secondary">{{ ausgabe.releaseDate }}</h4>
+              <p class="text-normal">
+                {{ ausgabe.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="about-section">
+        <div class="container">
+          <div class="row">
+            <h1 id="contact" class="fw-bold">andere section</h1>
+            <div class="col-md-6 mt-3">
+              <a href="#" class="text-info"
+                ><i class="fas fa-envelope"></i> hmm</a
               >
             </div>
             <div class="col-md-6 mt-3">
-              <!--  -->
+            
             </div>
           </div>
         </div>
-      </div>
-  
-      <footer class="bg-dark text-white text-center p-2">
-        Jässin Aouani
-        <a href="https://github.com/probablyjassin" class="link-light"
-          ><i class="fab fa-github"></i
-        ></a>
-        <a href="https://script.aouani.de"
-          ><p class="text-info">
-            Diese Seite wird von meinem Raspberry Pi bereitgestellt
-          </p></a
-        >
-      </footer>
+      </div> -->
+
+  <footer class="bg-dark text-white text-center p-2">
+    der schulclub
+    <a href="https://github.com/probablyjassin" class="link-light"
+      ><i class="fab fa-github"></i
+    ></a>
+    <a href="#"><p class="text-info">Das ist der Footer</p></a>
+  </footer>
 </template>
 
+<script setup>
+const { newspapers } = useUtils();
+console.log(newspapers);
+</script>
+
 <style>
-    @import "bootstrap/dist/css/bootstrap.css";
+@import "bootstrap/dist/css/bootstrap.css";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+@import "../assets/main.css";
 </style>
