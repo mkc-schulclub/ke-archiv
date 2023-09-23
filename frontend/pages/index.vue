@@ -70,7 +70,7 @@
             </div>
             <div class="col-md-6">
               <NuxtLink :to="`/${ausgabe.title}`">
-              <img src="../assets/example.jpg" alt="Image 1" />
+              <img src="../assets/example.jpg" alt="Image" class="zoomer" />
             </NuxtLink>
             </div>
           </div>
@@ -80,7 +80,7 @@
           <div class="row">
             <div class="col-md-6">
               <NuxtLink :to="`/${ausgabe.title}`">
-              <img src="../assets/example.jpg" alt="Image 1" />
+              <img src="../assets/example.jpg" alt="Image" class="zoomer"/>
             </NuxtLink>
             </div>
             
@@ -129,7 +129,13 @@
 </script>
 
 <style>
-  @import "bootstrap/dist/css/bootstrap.css";
-  @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
   @import "../assets/main.css";
+
+  .zoomer {
+    scale: 0.8;
+    transition: transform 0.3s ease !important;
+  }
+  .zoomer:hover {
+    transform: scale(1.2) !important;
+  }
 </style>
