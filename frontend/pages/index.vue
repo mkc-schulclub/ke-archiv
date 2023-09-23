@@ -5,14 +5,19 @@
   </div>
 
   <div class="header">
-    <h1 id="name">Max-Klinger-Schulclub</h1>
-    <h4 class="text-secondary">wow</h4>
-    <div class="social-links">
-      <a href="https://github.com/probablyjassin"
-        ><i class="fab fa-github"></i
-      ></a>
+    <div class="card">
+      <div class="card-body">
+        <h1 id="name">Max-Klinger-Schulclub</h1>
+        <h4 class="text-secondary">wow</h4>
+        <div class="social-links">
+          <a href="https://github.com/probablyjassin">
+            <i class="fab fa-github" style="color: black"></i>
+          </a>
+        </div>
+      </div>
     </div>
-    <a id="scroll-down-btn" href="#about" class="scroll-down-btn">
+
+    <a id="scroll-down-btn" href="#showcase" class="scroll-down-btn">
       <i class="fas fa-chevron-down"></i>
     </a>
     <a id="scroll-up-btn" href="#" class="scroll-up-btn">
@@ -64,7 +69,9 @@
               <NuxtLink :to="`/${ausgabe.title}`">balls</NuxtLink>
             </div>
             <div class="col-md-6">
+              <NuxtLink :to="`/${ausgabe.title}`">
               <img src="../assets/example.jpg" alt="Image 1" />
+            </NuxtLink>
             </div>
           </div>
         </div>
@@ -72,8 +79,11 @@
         <div v-else>
           <div class="row">
             <div class="col-md-6">
+              <NuxtLink :to="`/${ausgabe.title}`">
               <img src="../assets/example.jpg" alt="Image 1" />
+            </NuxtLink>
             </div>
+            
             <div class="col-md-6 mt-3">
               <p class="text-small text-warning">{{ ausgabe.title }}</p>
               <h1 class="fw-bold">{{ ausgabe.topic }}</h1>
@@ -81,6 +91,7 @@
               <p class="text-normal">
                 {{ ausgabe.description }}
               </p>
+              <NuxtLink :to="`/${ausgabe.title}`">balls</NuxtLink>
             </div>
           </div>
         </div>
@@ -114,12 +125,11 @@
 </template>
 
 <script setup>
-const { newspapers } = useUtils();
-console.log(newspapers);
+  const { newspapers } = useUtils();
 </script>
 
 <style>
-@import "bootstrap/dist/css/bootstrap.css";
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
-@import "../assets/main.css";
+  @import "bootstrap/dist/css/bootstrap.css";
+  @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+  @import "../assets/main.css";
 </style>
