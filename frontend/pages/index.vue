@@ -1,7 +1,7 @@
 <template>
   <div class="top-nav">
-    <a href="#showcase">hier kann ein Link hin</a>
-    <a href="#contact">sogar zwei oder mehr</a>
+    <a href="#showcase">Link 1</a>
+    <a href="#contact">Link 2</a>
   </div>
 
   <div class="header">
