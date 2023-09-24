@@ -55,45 +55,19 @@
       </div>
     </div>
 
-    <div v-for="(ausgabe, index) in newspapers">
-      <div class="container">
-        <div v-if="index % 2 == 0">
-          <div class="row">
-            <div class="col-md-6 mt-3">
-              <p class="text-small text-warning">{{ ausgabe.title }}</p>
-              <h1 class="fw-bold">{{ ausgabe.topic }}</h1>
-              <h4 class="fw-bold text-secondary">{{ ausgabe.releaseDate }}</h4>
-              <p class="text-normal">
-                {{ ausgabe.description }}
-              </p>
-              <NuxtLink :to="`/${ausgabe.title}`">balls</NuxtLink>
-            </div>
-            <div class="col-md-6">
-              <NuxtLink :to="`/${ausgabe.title}`">
-              <img src="../assets/example.jpg" alt="Image" class="zoomer" />
-            </NuxtLink>
-            </div>
-          </div>
+    <div v-for="(ausgabe, index) in newspapers" :key="index" class="container">
+      <div class="row">
+        <div class="col-md-6" :class="{'order-md-2': index % 2 === 0}">
+          <NuxtLink :to="`/${ausgabe.title}`">
+            <img src="../assets/example.jpg" alt="Image" class="zoomer" />
+          </NuxtLink>
         </div>
-
-        <div v-else>
-          <div class="row">
-            <div class="col-md-6">
-              <NuxtLink :to="`/${ausgabe.title}`">
-              <img src="../assets/example.jpg" alt="Image" class="zoomer"/>
-            </NuxtLink>
-            </div>
-            
-            <div class="col-md-6 mt-3">
-              <p class="text-small text-warning">{{ ausgabe.title }}</p>
-              <h1 class="fw-bold">{{ ausgabe.topic }}</h1>
-              <h4 class="fw-bold text-secondary">{{ ausgabe.releaseDate }}</h4>
-              <p class="text-normal">
-                {{ ausgabe.description }}
-              </p>
-              <NuxtLink :to="`/${ausgabe.title}`">balls</NuxtLink>
-            </div>
-          </div>
+        <div class="col-md-6 mt-3" :class="{'order-md-1': index % 2 === 0}">
+          <p class="text-small text-warning">{{ ausgabe.title }}</p>
+          <h1 class="fw-bold">{{ ausgabe.topic }}</h1>
+          <h4 class="fw-bold text-secondary">{{ ausgabe.releaseDate }}</h4>
+          <p class="text-normal">{{ ausgabe.description }}</p>
+          <NuxtLink :to="`/${ausgabe.title}`">Ansehen</NuxtLink>
         </div>
       </div>
     </div>
@@ -125,7 +99,13 @@
 </template>
 
 <script setup>
-  const { newspapers } = useUtils();
+import { useAusgaben } from '~/composables/useAusgaben';
+
+const { ausgaben } = useAusgaben();
+
+let newspapers = ausgaben
+  
+
 </script>
 
 <style>

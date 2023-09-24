@@ -8,4 +8,7 @@ export default defineNuxtConfig({
   },
   plugins: [
   ],
+  server: {
+    port: 5001,
+  },
 })
