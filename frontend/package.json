@@ -14,7 +14,8 @@
     "nuxt": "^3.7.3"
   },
   "dependencies": {
-    "@nuxtjs/composition-api": "^0.33.1",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
     "bootstrap": "^5.3.2",
     "bootstrap-vue": "^2.23.1"
   }

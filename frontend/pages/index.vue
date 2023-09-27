@@ -104,7 +104,6 @@ import { useAusgaben } from '~/composables/useAusgaben';
 const { ausgaben } = useAusgaben();
 
 let newspapers = ausgaben
-  
 
 </script>
 

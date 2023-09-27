@@ -4,11 +4,9 @@ import { resolve } from "path"
 export default defineNuxtConfig({
   devtools: { enabled: true },
   alias: {
-    '@': resolve(__dirname, "/")
+    '@': resolve(__dirname)
   },
-  plugins: [
+  css: [
+    'bootstrap/dist/css/bootstrap.min.css',
   ],
-  server: {
-    port: 5001,
-  },
 })
