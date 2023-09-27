@@ -19,9 +19,9 @@
 </script>
 
 <style scoped>
-#content {
-    background-color: white;
-    color: black !important;
-    height: 100vh;
-}
+    #content {
+        background-color: white;
+        color: black !important;
+        height: 100vh;
+    }
 </style>
