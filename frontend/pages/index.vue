@@ -1,4 +1,6 @@
 <template>
+  <transition name="page" mode="out-in">
+    <div id="content">
   <div class="top-nav">
     <a href="#showcase">Link 1</a>
     <a href="#contact">Link 2</a>
@@ -96,6 +98,8 @@
     ></a>
     <a href="#"><p class="text-info">Das ist der Footer</p></a>
   </footer>
+  </div>
+</transition>
 </template>
 
 <script setup>

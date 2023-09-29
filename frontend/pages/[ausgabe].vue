@@ -1,9 +1,15 @@
 <template>
+    <transition name="page" mode="out-in">
     <div id="content">
         ausgabe: {{ $route.params.ausgabe }} <br>
         <h1>{{ currentPaper.title }}</h1>
         {{ currentPaper.description }} <br>
+        <div>
+            <NuxtLink to="/">Zurück</NuxtLink>
+        </div>
     </div>
+    
+    </transition>
 </template>
 
 <script setup>
