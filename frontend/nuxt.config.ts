@@ -9,4 +9,7 @@ export default defineNuxtConfig({
   css: [
     'bootstrap/dist/css/bootstrap.min.css',
   ],
+  server: {
+    port: process.env.PORT || 3001,
+  },
 })
