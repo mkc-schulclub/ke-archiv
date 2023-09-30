@@ -1,14 +1,18 @@
 <template>
+  <transition>
+  <div>
     <div>
-      <h1>Admin page I guess</h1>
+        Counter: {{ counter }}
+        <div>
+            <button @click="counter++">++</button>
+            <button @click="counter--">--</button>
+        </div>
     </div>
+    <nuxt-link to="/">zurück</nuxt-link>
+  </div>
+</transition>
 </template>
-  
-<script>
-  
-</script>
-  
-<style>
 
-</style>
-  
+<script setup>
+    const { counter } = useCounter()
+</script>

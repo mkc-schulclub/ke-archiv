@@ -19,6 +19,10 @@
       </div>
     </div>
 
+    <div>
+      <!-- <Counter /> -->
+    </div>
+
     <a id="scroll-down-btn" href="#showcase" class="scroll-down-btn">
       <i class="fas fa-chevron-down"></i>
     </a>
@@ -97,6 +101,11 @@
       ><i class="fab fa-github"></i
     ></a>
     <a href="#"><p class="text-info">Das ist der Footer</p></a>
+    <p><Counter /></p>
+    <nuxt-link to="/admin">admin</nuxt-link>
+    <div>
+      <br>
+    </div>
   </footer>
   </div>
 </transition>
@@ -108,7 +117,6 @@ import { useAusgaben } from '~/composables/useAusgaben';
 const { ausgaben } = useAusgaben();
 
 let newspapers = ausgaben
-
 </script>
 
 <style>
