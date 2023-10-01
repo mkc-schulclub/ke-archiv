@@ -1,3 +1,4 @@
+from datetime import datetime
 from logging import getLogger
 from typing import List
 
@@ -57,6 +58,7 @@ async def updateIssue(item: Issue):
         )
     
     await db.issues.update_one({"title": item.title}, {"$set": {k: v for k, v in item.model_dump().items() if v}})
+    issue.date = datetime.strptime(item.date or issue.date, "%Y-%m-%d")
     return {k: v if v else issue[k] for k, v in item.model_dump().items()} | {"api:statuscode": statusCodes.SUCCESS}
 
 
