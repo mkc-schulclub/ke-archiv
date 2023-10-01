@@ -1,5 +1,5 @@
 export const useUtils = () => {
-    const newspapers = [
+    const ausgaben = [
         {
           title: "The Daily Times",
           topic: "National News",
@@ -20,6 +20,6 @@ export const useUtils = () => {
         }
       ];
       return {
-        newspapers
+        ausgaben
       }    
 }

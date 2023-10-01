@@ -1,33 +1,42 @@
 <template>
-    <transition name="page" mode="out-in">
+  <transition name="page" mode="out-in">
     <div id="content">
-        ausgabe: {{ $route.params.ausgabe }} <br>
-        <h1>{{ currentPaper.title }}</h1>
-        {{ currentPaper.description }} <br>
-        <div>
-            <NuxtLink to="/">Zurück</NuxtLink>
+      Route: {{ $route.params.ausgabe }}
+
+      <h1>{{ ausgabe.title }}</h1>
+      <p>{{ ausgabe.date }}</p>
+      <p>{{ ausgabe.description }}</p>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm" v-for="(top, index) in ausgabe.tops" :key="index">
+            <p>{{ top[0] }}</p>
+            <p>{{ top[1] }}</p>
+          </div>
         </div>
+      </div>
+
+      <div>
+        <NuxtLink to="/">Zurück</NuxtLink>
+      </div>
     </div>
-    
-    </transition>
+  </transition>
 </template>
 
 <script setup>
-    const router = useRouter()
-    const route = useRoute()
-    const { newspapers } = useUtils()
-    let currentPaper = null
-    currentPaper = newspapers.find(newspaper => newspaper.title === route.params.ausgabe);
-    if (!currentPaper) {
-        currentPaper = {}
-        router.push("/")
-    }
+const router = useRouter();
+const route = useRoute();
+
+const { id } = useID()
+const { ausgaben } = useAusgaben()
+
+const ausgabe = computed(() => ausgaben.value.find(ausgabe => id(ausgabe.title) === id(route.params.ausgabe)) || []);
 </script>
 
 <style scoped>
-    #content {
-        background-color: white;
-        color: black !important;
-        height: 100vh;
-    }
+#content {
+  background-color: white;
+  color: black !important;
+  height: 100vh;
+}
 </style>
