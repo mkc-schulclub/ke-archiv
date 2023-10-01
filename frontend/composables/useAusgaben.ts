@@ -5,9 +5,9 @@ export function useAusgaben() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://script.aouani.de/api/ausgaben');
+      const response = await fetch('https://frog.lowkey.gay/quaxly/api/v1/issues');
       const data = await response.json();
-      ausgaben.value = data.response;
+      ausgaben.value = data;
     } catch (error) {
       console.error('Error fetching ausgaben:', error);
     }

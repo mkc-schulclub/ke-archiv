@@ -54,7 +54,7 @@
               class="col-md-6 mt-3"
               :class="{ 'order-md-1': index % 2 === 0 }"
             >
-              <p class="text-small text-warning">{{ ausgabe.date }}</p>
+              <p class="text-small text-warning">{{ date(ausgabe.date) }}</p>
               <h1 class="fw-bold">{{ ausgabe.title }}</h1>
               <h4 class="fw-bold text-secondary">{{ ausgabe.releaseDate }}</h4>
               <p class="text-normal">{{ ausgabe.description }}</p>
@@ -79,6 +79,7 @@
 import { useAusgaben } from "~/composables/useAusgaben";
 
 const { id } = useID();
+const { date } = useDate();
 const { ausgaben } = useAusgaben();
 
 let newspapers = ausgaben;

@@ -9,8 +9,8 @@
 
       <div class="container">
         <div class="row">
-          <div class="col-sm" v-for="(top, index) in ausgabe.tops" :key="index">
-            <p>{{ top[0] }}</p>
+          <div class="col-sm card mt-1" v-for="(top, index) in Object.entries(ausgabe.tops)" :key="index">
+            <h3>{{ top[0] }}</h3>
             <p>{{ top[1] }}</p>
           </div>
         </div>
