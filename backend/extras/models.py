@@ -1,12 +1,12 @@
 from datetime import datetime
-from typing import Optional, List, Dict
+from typing import Dict
 
 from pydantic import BaseModel
 
 class Issue(BaseModel):
     title:       str                      = ""
     description: str                      = ""
-    date:        str                      = ""
+    date:        datetime                 = datetime.now()
     url:         str                      = ""
     tops:        Dict[str, str]           = {}
 
