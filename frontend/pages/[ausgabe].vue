@@ -17,7 +17,7 @@
       </div>
 
       <div>
-        <NuxtLink to="/">Zurück</NuxtLink>
+        <NuxtLink to="/" class="btn btn-primary">Zurück</NuxtLink>
       </div>
     </div>
   </transition>
@@ -35,8 +35,8 @@ const ausgabe = computed(() => ausgaben.value.find(ausgabe => id(ausgabe.title) 
 
 <style scoped>
 #content {
-  background-color: white;
-  color: black !important;
+  background-color: black;
+  color: whitesmoke !important;
   height: 100vh;
 }
 </style>

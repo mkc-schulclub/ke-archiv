@@ -49,17 +49,17 @@
               class="col-md-6 mt-3"
               :class="{ 'order-md-1': index % 2 === 0 }"
             >
-              <p class="text-small text-warning">{{ ausgabe.title }}</p>
-              <h1 class="fw-bold">{{ ausgabe.topic }}</h1>
+              <p class="text-small text-warning">{{ ausgabe.date }}</p>
+              <h1 class="fw-bold">{{ ausgabe.title }}</h1>
               <h4 class="fw-bold text-secondary">{{ ausgabe.releaseDate }}</h4>
               <p class="text-normal">{{ ausgabe.description }}</p>
-              <NuxtLink :to="`/${id(ausgabe.title)}`">Ansehen</NuxtLink>
+              <NuxtLink :to="`/${id(ausgabe.title)}`" class="btn btn-primary">Ansehen</NuxtLink>
             </div>
           </div>
         </div>
       </div>
 
-      <footer class="bg-dark text-white text-center p-2">
+      <footer class="text-white text-center p-2">
         <p>der schulclub</p>
         <a href="https://github.com/probablyjassin" class="link-light"
           ><i class="fab fa-github"></i

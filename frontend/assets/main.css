@@ -1,9 +1,13 @@
+/* Use custom color pallette*/
+@import './custom.css';
+
 /* Global */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #111;
+    background-color: var(--primary);
+    color: whitesmoke;
 }
 /* Navbar */
 .top-nav {
@@ -24,14 +28,14 @@ body {
   transition: color 0.3s;
 }
 .top-nav a:hover {
-  color: orange;
+  color: var(--accent);
 }
 .top-nav a::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 2px;
-  background-color: #ffcc00;
+  background-color: var(--accent);
   bottom: -5px;
   left: 0;
   transform: scaleX(0);
@@ -89,7 +93,7 @@ body {
   animation: moveArrow 1s infinite;
 }
 .scroll-down-btn:hover {
-  color: orange;
+  color: var(--accent);
 }
 .scroll-down-btn i {
   font-size: 36px;
@@ -118,7 +122,7 @@ body {
   transition: all 1s;
 }
 .scroll-up-btn:hover {
-  color: orange;
+  color: var(--accent);
 }
 .scroll-up-btn i {
   font-size: 36px;
@@ -131,9 +135,9 @@ body {
 }
 /* Showcase section */
 .section-showcase {
-  background-color: #161c06;
+  background-color: var(--background);
   padding: 40px;
-  color: #fff;
+  color: var(--text);
 }
 .section-showcase h2 {
   margin-bottom: 20px;
@@ -143,6 +147,13 @@ body {
   height: auto;
   max-height: 360px;
   object-fit: cover;
+}
+.section-showcase .text-warning {
+  color: var(--accent) !important;
+}
+.section-showcase .btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 /* Showcase fade animations */
 .move {
@@ -155,6 +166,9 @@ body {
   opacity: 1 !important;
 }
 /* Footer */
+footer {
+  background-color: var(--secondary);
+}
 #footer, footer a, footer a:visited, footer a:hover, footer a:active {
   text-decoration: none;
   color: inherit;
