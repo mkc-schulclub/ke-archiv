@@ -1,8 +1,9 @@
 <template>
   <transition name="page" mode="out-in">
     <div>
-    <div id="content">
-      <div class="">
+      <div id="content">
+      <div class="container text-center">
+        <img src="../assets/example.jpg" alt="Image" class="img-fluid"/>
         <h1>{{ ausgabe.title }}</h1>
         <p>{{ date(ausgabe.date) }}</p>
         <p>{{ ausgabe.description }}</p>
@@ -23,11 +24,7 @@
             <nuxt-link v-else :to="id(ausgaben[0].title)" class="btn btn-primary">Weiter</nuxt-link>
             <NuxtLink to="/" class="btn btn-primary">Zurück zur Startseite</NuxtLink>
       </div>
-   
     </div>
-    <footer style="height: 100%;">
-      <p>Route: {{ $route.params.ausgabe }}</p>
-    </footer>
   </div>
   </transition>
 </template>
