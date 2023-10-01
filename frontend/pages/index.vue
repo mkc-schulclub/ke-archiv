@@ -1,9 +1,13 @@
 <template>
   <transition name="page" mode="out-in">
     <div id="content">
+
       <div class="top-nav">
         <a href="#showcase">Link 1</a>
         <a href="#contact">Link 2</a>
+        <NuxtLink to="/admin" class="icon">
+          <i class="fas fa-pencil-alt"></i>
+        </NuxtLink>
       </div>
 
       <div class="header">
@@ -40,6 +44,7 @@
           class="container"
         >
           <div class="row">
+            <div class="divider"></div>
             <div class="col-md-6" :class="{ 'order-md-2': index % 2 === 0 }">
               <NuxtLink :to="`/${id(ausgabe.title)}`">
                 <img src="../assets/example.jpg" alt="Image" class="zoomer" />
@@ -60,13 +65,11 @@
       </div>
 
       <footer class="text-white text-center p-2">
-        <p>der schulclub</p>
         <a href="https://github.com/probablyjassin" class="link-light"
           ><i class="fab fa-github"></i
         ></a>
         <a href="#"><p class="text-info">Das ist der Footer</p></a>
         <Counter />
-        <nuxt-link to="/admin">admin</nuxt-link>
       </footer>
     </div>
   </transition>
@@ -82,8 +85,6 @@ let newspapers = ausgaben;
 </script>
 
 <style>
-@import "../assets/main.css";
-
 .zoomer {
   scale: 0.8;
   transition: transform 0.3s ease !important;
