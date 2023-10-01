@@ -1,5 +1,7 @@
 <template>
   <title>Ausgaben-Archiv - MKC-Schulclub</title>
+  <link href="https://fonts.cdnfonts.com/css/youtube-sans" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
   <div>
     <NuxtLayout>
       <NuxtPage />
@@ -11,8 +13,6 @@
 </script>
 
 <style>
-  @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
-
 .page-enter-active,
 .page-leave-active {
   transition: all 0.4s;

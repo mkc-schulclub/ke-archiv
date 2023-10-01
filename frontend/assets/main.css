@@ -6,8 +6,10 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: var(--primary);
+    background-color: var(--background);
     color: whitesmoke;
+    font-family: 'YouTube Sans', sans-serif;
+                                                                    font-family: 'YouTube Sans Dark', sans-serif;
 }
 /* Navbar */
 .top-nav {
@@ -154,6 +156,13 @@ body {
 .section-showcase .btn-primary {
   background-color: var(--primary);
   border-color: var(--primary);
+}
+.section-showcase .btn-primary:focus {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+.section-showcase .btn-primary:hover {
+  filter: brightness(80%);
 }
 /* Showcase fade animations */
 .move {
