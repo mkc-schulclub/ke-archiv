@@ -8,7 +8,7 @@
             <button @click="counter--">--</button>
         </div>
     </div>
-    <nuxt-link to="/">zurück</nuxt-link>
+    <nuxt-link to="/">Zurück</nuxt-link>
     <input type="date" name="date" id="date" v-model="date">
     <button @click="console.log(date)"></button>
   </div>
