@@ -17,5 +17,5 @@
 </template>
 
 <script setup>
-const { error } = useAusgaben()
+const { ausgaben, error } = useAusgaben()
 </script>

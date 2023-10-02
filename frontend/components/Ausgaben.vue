@@ -3,6 +3,7 @@
         <div class="container">
           <div class="col-md-12 text-center">
             <h1 class="fw-bold">Zeitungsarchiv</h1>
+            <LoadDots v-if="error === false && !ausgaben.length"/>
           </div>
         </div>
 
@@ -38,7 +39,7 @@ import { useAusgaben } from "~/composables/useAusgaben";
 
 const { id } = useID();
 const { date } = useDate();
-const { ausgaben } = useAusgaben();
+const { ausgaben, error } = useAusgaben();
 
 let newspapers = ausgaben;
 </script>
