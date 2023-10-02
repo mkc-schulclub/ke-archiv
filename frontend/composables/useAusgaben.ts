@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router';
 
 export function useAusgaben() {
   let ausgaben = ref([]);
+  let error = ref(false)
   const router = useRouter()
   
   const fetchData = async () => {
@@ -19,7 +20,7 @@ export function useAusgaben() {
         fetchData()
       }
       else {
-        router.replace("/500")
+        error = true
       }
     }
   };
@@ -30,5 +31,6 @@ export function useAusgaben() {
   
   return {
     ausgaben,
+    error,
   };
 }
