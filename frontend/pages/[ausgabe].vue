@@ -1,13 +1,15 @@
 <template>
   <transition name="page" mode="out-in">
-    <div>
+    <div class="flex-grow">
       <div id="content">
       <div class="container text-center">
-        <img src="../assets/example.jpg" alt="Image" class="img-fluid"/>
+        <nuxt-link :to="`${ausgabe.url}`">
+          <img src="../assets/example.jpg" alt="Image" class="img-fluid"/>
+        </nuxt-link> <br>
+        <nuxt-link :to="ausgabe.url" class="btn btn-primary mt-2">Ansehen</nuxt-link>
         <h1>{{ ausgabe.title }}</h1>
         <p>{{ date(ausgabe.date) }}</p>
         <p>{{ ausgabe.description }}</p>
-        <p>Ansehen: {{ ausgabe.url }}</p>
       </div>
 
       <div class="container">
@@ -24,6 +26,9 @@
             <nuxt-link v-else :to="id(ausgaben[0].title)" class="btn btn-primary">Weiter</nuxt-link>
             <NuxtLink to="/" class="btn btn-primary">Zurück zur Startseite</NuxtLink>
       </div>
+      <footer class="mt-2 text-center">
+        <p>Hmmge</p>
+      </footer>
     </div>
   </div>
   </transition>
@@ -36,14 +41,19 @@ const route = useRoute();
 const { id } = useID()
 const { date } = useDate()
 const { ausgaben } = useAusgaben()
-const ausgabe = computed(() => ausgaben.value.find(ausgabe => id(ausgabe.title) === id(route.params.ausgabe)) || []);
-//const next = computed(() => ausgaben[0].title || "/")
+const ausgabe = computed(() => ausgaben.value.find(ausgabe => id(ausgabe.title) === route.params.ausgabe) || []);
 </script>
 
 <style scoped>
+.flex-grow {
+  flex-grow: 1;
+}
 #content {
   color: whitesmoke !important;
   height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .card {
   color: var(--text);

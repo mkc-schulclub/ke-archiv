@@ -12,6 +12,27 @@ body {
   font-family: 'YouTube Sans Dark', sans-serif;
 }
 
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:focus {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.btn-primary:hover {
+  filter: brightness(80%);
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+.btn-primary:active {
+  filter: brightness(80%);
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
 /* Navbar */
 .top-nav {
   z-index: 9999;
@@ -187,20 +208,6 @@ body {
 
 .section-showcase .text-warning {
   color: var(--accent) !important;
-}
-
-.section-showcase .btn-primary {
-  background-color: var(--primary);
-  border-color: var(--primary);
-}
-
-.section-showcase .btn-primary:focus {
-  background-color: var(--secondary);
-  border-color: var(--secondary);
-}
-
-.section-showcase .btn-primary:hover {
-  filter: brightness(80%);
 }
 
 .section-showcase .divider {
