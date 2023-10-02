@@ -1,7 +1,8 @@
 <template>
   <transition name="page" mode="out-in">
     <div class="flex-grow">
-      <div id="content">
+      <title>{{ ausgabe.title || "Nicht gefunden" }}</title>
+      <div id="content" v-if="ausgabe.tops">
       <div class="container text-center">
         <nuxt-link :to="`${ausgabe.url}`">
           <img src="../assets/example.jpg" alt="Image" class="img-fluid"/>
@@ -29,6 +30,14 @@
       <footer class="mt-2 text-center">
         <p>Hmmge</p>
       </footer>
+    </div>
+    <div v-else-if="ausgaben.length && !ausgabe.tops">
+      <h3>Diese Ausgabe konnte nicht gefunden werden</h3>
+      <NuxtLink to="/" class="btn btn-primary mx-auto">Zurück zur Startseite</NuxtLink>
+    </div>
+    <div v-else>
+      <LoadDots/>
+      <NuxtLink to="/" class="btn btn-primary mx-auto">Zurück zur Startseite</NuxtLink>
     </div>
   </div>
   </transition>

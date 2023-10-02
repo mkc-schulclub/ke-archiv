@@ -9,7 +9,7 @@
       <Scrolls/>
 
       <Ausgaben v-if="error === false"/>
-      <Error v-else/>
+      <FetchError v-else/>
       
       <Footer/>
     </div>
