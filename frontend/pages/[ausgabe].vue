@@ -44,7 +44,6 @@
 </template>
 
 <script setup>
-const router = useRouter();
 const route = useRoute();
 
 const { id } = useID()
