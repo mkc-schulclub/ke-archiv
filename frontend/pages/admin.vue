@@ -1,25 +1,29 @@
 <template>
   <transition>
-  <div>
     <div>
+      <div>
         Counter: {{ counter }}
         <div>
-            <button @click="counter++">++</button>
-            <button @click="counter--">--</button>
+          <button @click="counter++">++</button>
+          <button @click="counter--">--</button>
         </div>
+      </div>
+      <nuxt-link to="/">Zurück</nuxt-link>
+      <input type="date" name="date" id="date" v-model="date" />
+      <button @click="console.log(date)"></button>
     </div>
-    <nuxt-link to="/">Zurück</nuxt-link>
-    <input type="date" name="date" id="date" v-model="date">
-    <button @click="console.log(date)"></button>
-  </div>
-</transition>
+  </transition>
 </template>
 
 <script setup>
-    const { counter } = useCounter()
-    let date;
-    definePageMeta({
-      middleware: 'auth'
-  // or middleware: 'auth'
-})
+const session = useCookie("session");
+const router = useRouter();
+if (!session.value) {
+  router.push("/");
+}
+const { counter } = useCounter();
+let date;
+/* definePageMeta({
+  middleware: "auth",
+}); */
 </script>
