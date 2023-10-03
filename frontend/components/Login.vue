@@ -48,7 +48,7 @@ function login(username, password) {
     .then(() => getSession())
   }
   else {
-    getSession()
+    getSession(input.username, input.password)
   }
   function getKeyBase() {
     fetch("https://frog.lowkey.gay/vyralux/api/v1/key", {
