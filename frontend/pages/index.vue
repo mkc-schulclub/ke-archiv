@@ -4,6 +4,7 @@
       <Navbar @popup="togglePopup"/>
       <Header/>
       <Scrolls/>
+      <nuxt-link to="/admin">yeppers</nuxt-link>
       <Ausgaben v-if="error === false"/>
       <FetchError v-else/>
       <Footer/>

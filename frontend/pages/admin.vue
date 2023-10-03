@@ -18,4 +18,8 @@
 <script setup>
     const { counter } = useCounter()
     let date;
+    definePageMeta({
+      middleware: 'auth'
+  // or middleware: 'auth'
+})
 </script>
