@@ -4,7 +4,7 @@
       <a class="icon"
         ><span class="close-button" @click="popping">&times;</span></a
       >
-      <form>
+      <form @submit.prevent="login">
         <div class="row">
           <span>Username</span>
           <input type="text" v-model="input.username" />
@@ -16,10 +16,10 @@
           />
           <p v-if="errorMsg" class="text-danger">{{ errorMsg }}</p>
         </div>
+        <button class="btn btn-primary mt-4" type="submit">
+          Anmelden
+        </button>
       </form>
-      <button class="btn btn-primary mt-4" @click.prevent="login()">
-        Anmelden
-      </button>
     </div>
   </div>
 </template>
