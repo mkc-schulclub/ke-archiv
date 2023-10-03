@@ -4,7 +4,7 @@
       <a class="icon"
         ><span class="close-button" @click="popping">&times;</span></a
       >
-      <form @submit.prevent="login">
+      <form @submit.prevent="login(input.username, input.password)">
         <div class="row">
           <span>Username</span>
           <input type="text" v-model="input.username" />
@@ -16,9 +16,7 @@
           />
           <p v-if="errorMsg" class="text-danger">{{ errorMsg }}</p>
         </div>
-        <button class="btn btn-primary mt-4" type="submit">
-          Anmelden
-        </button>
+        <button class="btn btn-primary mt-4" type="submit">Anmelden</button>
       </form>
     </div>
   </div>
@@ -41,11 +39,18 @@ const session = useCookie("session", {
 
 const input = {};
 const errorMsg = ref("");
-function login() {
-  if (!(input.username && input.password)) {
+function login(username, password) {
+  if (!(username && password)) {
     return (errorMsg.value = "Username oder Passwort fehlen");
   }
   if (!keyBase.value) {
+    getKeyBase()
+    .then(() => getSession())
+  }
+  else {
+    getSession()
+  }
+  function getKeyBase() {
     fetch("https://frog.lowkey.gay/vyralux/api/v1/key", {
       method: "GET",
       headers: {
@@ -58,42 +63,43 @@ function login() {
           CryptoJS.enc.Hex
         );
       })
-      .then(() => {
-        const data = JSON.stringify({
-          name: input.username,
-          password: input.password,
-        });
-        fetch("https://frog.lowkey.gay/vyralux/api/v1/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            hjtrfs: CryptoJS.HmacSHA256(data, keyBase.value).toString(
-              CryptoJS.enc.Hex
-            ),
-          },
-          body: data,
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.status === 400) {
-              return (errorMsg.value = "Login fehlgeschlagen");
-            }
-            const { sid } = data;
-            if (sid) {
-              session.value = sid;
-              router.push("/admin");
-            } else {
-              console.error("No session token generated");
-              errorMsg.value = "Login fehlgeschlagen. Bitte erneut versuchen.";
-            }
-          })
-          .catch((error) => {
-            this.errorMessage = "Login fehlgeschlagen!";
-            console.error("Error fetching data:", error);
-          });
-      })
+      .then(() => {})
       .catch((error) => {
         errorMsg.value = "Login fehlgeschlagen!";
+        console.error("Error fetching data:", error);
+      });
+  }
+  function getSession(username, password) {
+    const data = JSON.stringify({
+      name: username,
+      password: password,
+    });
+    fetch("https://frog.lowkey.gay/vyralux/api/v1/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        hjtrfs: CryptoJS.HmacSHA256(data, keyBase.value).toString(
+          CryptoJS.enc.Hex
+        ),
+      },
+      body: data,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === 400) {
+          return (errorMsg.value = "Login fehlgeschlagen");
+        }
+        const { sid } = data;
+        if (sid) {
+          session.value = sid;
+          router.push("/admin");
+        } else {
+          console.error("No session token generated");
+          errorMsg.value = "Login fehlgeschlagen. Bitte erneut versuchen.";
+        }
+      })
+      .catch((error) => {
+        this.errorMessage = "Login fehlgeschlagen!";
         console.error("Error fetching data:", error);
       });
   }
