@@ -1,6 +1,8 @@
 <template>
   <transition>
     <div>
+      <AdminNavbar :pages="pages"/>
+
       <a @click="deleteCookies()">Logout</a>
       <div>
         Counter: {{ counter }}
@@ -20,14 +22,20 @@
 const keyBase = useCookie('key')
 const session = useCookie("session");
 const router = useRouter();
-if (!session.value) {
+/* if (!session.value) {
   router.push("/");
-}
+} */
+
+const pages = [
+  {
+    title: "Dashboard",
+  }, {
+    title: "Ausgaben",
+  }
+]
+
 const { counter } = useCounter();
 let date;
-/* definePageMeta({
-  middleware: "auth",
-}); */
 function deleteCookies() {
   session.value = null
   keyBase.value = null

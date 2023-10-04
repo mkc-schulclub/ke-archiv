@@ -16,7 +16,7 @@
             <div class="divider"></div>
             <div class="col-md-6" :class="{ 'order-md-2': index % 2 === 0 }">
               <NuxtLink :to="`/${id(ausgabe.title)}`">
-                <img src="../assets/example.jpg" alt="Image" class="zoomer" />
+                <img src="~/assets/example.jpg" alt="Image" class="zoomer" />
               </NuxtLink>
             </div>
             <div

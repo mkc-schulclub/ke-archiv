@@ -1,13 +1,13 @@
 <template>
   <transition name="page" mode="out-in">
     <div id="content">
-      <Navbar @popup="tryLogin"/>
-      <Header/>
-      <Scrolls/>
-      <Ausgaben v-if="error === false"/>
-      <FetchError v-else/>
-      <Footer/>
-      <Login v-if="isPopped == true" @popup="togglePopup"/>
+      <HomeNavbar @popup="tryLogin"/>
+      <HomeHeader/>
+      <HomeScrolls/>
+      <HomeAusgaben v-if="error === false"/>
+      <HomeFetchError v-else/>
+      <HomeFooter/>
+      <HomeLogin v-if="isPopped == true" @popup="togglePopup"/>
     </div>
   </transition>
 </template>
