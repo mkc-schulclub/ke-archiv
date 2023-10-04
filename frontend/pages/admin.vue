@@ -1,6 +1,7 @@
 <template>
   <transition>
     <div>
+      <a @click="deleteCookies()">Logout</a>
       <div>
         Counter: {{ counter }}
         <div>
@@ -16,6 +17,7 @@
 </template>
 
 <script setup>
+const keyBase = useCookie('key')
 const session = useCookie("session");
 const router = useRouter();
 if (!session.value) {
@@ -26,4 +28,8 @@ let date;
 /* definePageMeta({
   middleware: "auth",
 }); */
+function deleteCookies() {
+  session.value = null
+  keyBase.value = null
+}
 </script>
