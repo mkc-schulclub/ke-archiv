@@ -34,7 +34,31 @@ const props = defineProps({
 </script>
 
 <style scoped>
-.nav, nav a {
-    color: white !important;
+nav, nav a {
+    color: whitesmoke;
+    background-color: var(--secondary);
+}
+@media (max-width: 1000px) {
+  #navcontent {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /*overflow-x: auto;*/
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  #navcontent .nav-item {
+    white-space: nowrap;
+    /*margin: 0 3vh;*/
+    margin-left: 0;
+    margin-right: 1em;
+  }
+  .navbar-brand {
+    margin-left: 4vh;
+  }
+}
+.navbar-brand {
+  margin-left: 30px;
 }
 </style>

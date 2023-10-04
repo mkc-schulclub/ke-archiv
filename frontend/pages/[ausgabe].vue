@@ -36,7 +36,7 @@
       <NuxtLink to="/" class="btn btn-primary mx-auto">Zurück zur Startseite</NuxtLink>
     </div>
     <div v-else>
-      <LoadDots/>
+      <HomeLoadDots/>
       <NuxtLink to="/" class="btn btn-primary mx-auto">Zurück zur Startseite</NuxtLink>
     </div>
   </div>
