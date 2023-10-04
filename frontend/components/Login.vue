@@ -15,9 +15,16 @@
             v-model="input.password"
           />
           <p v-if="errorMsg" class="text-danger">{{ errorMsg }}</p>
+          <p v-if="statusMsg && dev" class="text-primary">{{ statusMsg }}</p>
         </div>
-        <button class="btn btn-primary mt-4" type="submit">Anmelden</button>
+          <button class="btn btn-primary mt-4" type="submit">Anmelden</button>
       </form>
+      <div class="row justify-content-end me-0">
+        <label class="switch col-1">
+          <input type="checkbox" v-model="dev">
+          <span class="slider round"></span>
+        </label>
+      </div>
     </div>
   </div>
 </template>
@@ -38,19 +45,22 @@ const session = useCookie("session", {
 });
 
 const input = {};
+let dev = false;
 const errorMsg = ref("");
-function login(username, password) {
+const statusMsg = ref("");
+
+async function login(username, password) {
   if (!(username && password)) {
     return (errorMsg.value = "Username oder Passwort fehlen");
   }
   if (!keyBase.value) {
     getKeyBase()
-    .then(() => getSession())
   }
   else {
     getSession(input.username, input.password)
   }
   function getKeyBase() {
+    statusMsg.value = "getting key"
     fetch("https://frog.lowkey.gay/vyralux/api/v1/key", {
       method: "GET",
       headers: {
@@ -62,10 +72,12 @@ function login(username, password) {
         keyBase.value = CryptoJS.SHA256(data["keyBase"]).toString(
           CryptoJS.enc.Hex
         );
+        statusMsg.value = "key saved"
       })
-      .then(() => {})
+      .then(() => {getSession(input.username, input.password)})
       .catch((error) => {
         errorMsg.value = "Login fehlgeschlagen!";
+        statusMsg.value = "error while getting key"
         console.error("Error fetching data:", error);
       });
   }
@@ -74,6 +86,7 @@ function login(username, password) {
       name: username,
       password: password,
     });
+    statusMsg.value = "getting session"
     fetch("https://frog.lowkey.gay/vyralux/api/v1/login", {
       method: "POST",
       headers: {
@@ -87,19 +100,25 @@ function login(username, password) {
       .then((response) => response.json())
       .then((data) => {
         if (data.status === 400) {
-          return (errorMsg.value = "Login fehlgeschlagen");
+          return (
+            errorMsg.value = "Login fehlgeschlagen",
+            statusMsg.value = "400 response"
+          );
         }
         const { sid } = data;
         if (sid) {
+          statusMsg.value = "sucess"
           session.value = sid;
           router.push("/admin");
         } else {
           console.error("No session token generated");
+          statusMsg.value = "error while using session token"
           errorMsg.value = "Login fehlgeschlagen. Bitte erneut versuchen.";
         }
       })
       .catch((error) => {
-        this.errorMessage = "Login fehlgeschlagen!";
+        errorMsg.value = "Login fehlgeschlagen!";
+        statusMsg.value = "error while getting session token"
         console.error("Error fetching data:", error);
       });
   }
@@ -141,5 +160,67 @@ export default {
   right: 35px;
   font-size: xx-large;
   cursor: pointer;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  size: 1%;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
 </style>
