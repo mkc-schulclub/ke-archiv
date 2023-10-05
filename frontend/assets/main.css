@@ -210,7 +210,7 @@ body {
   color: var(--accent) !important;
 }
 
-.section-showcase .divider {
+.divider {
   margin-top: 10px;
   border-top: 1px solid var(--secondary);
   width: 100%;

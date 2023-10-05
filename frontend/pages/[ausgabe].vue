@@ -28,7 +28,7 @@
             <NuxtLink to="/" class="btn btn-primary">Zurück zur Startseite</NuxtLink>
       </div>
       <footer class="mt-2 text-center">
-        <p>Hmmge</p>
+        <p>Footer</p>
       </footer>
     </div>
     <div v-else-if="ausgaben.length && !ausgabe.tops">

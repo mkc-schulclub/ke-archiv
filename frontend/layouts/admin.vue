@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg">
-      <router-link class="navbar-brand ml-4" to="/">MKC Merch-Store</router-link>
+      <router-link class="navbar-brand ml-4" to="/">MKC Schulclub</router-link>
       <div class="container-fluid">
         <ul id="navcontent" class="navbar-nav me-auto mb-2 mb-lg-0">
           <li v-for="(page, index) in pages" :key="index" class="nav-item">
@@ -25,10 +25,15 @@ const pages = [
   {
     title: "Dashboard",
     url: "admin",
-  }, {
+  }, 
+  {
     title: "Ausgaben",
     url: `admin/Ausgaben`,
-  }
+  },
+  {
+    title: "Users",
+    url: `admin/Users`,
+  },
 ]
 </script>
 
@@ -64,5 +69,12 @@ nav a {
 
 .navbar-brand {
   margin-left: 30px;
+}
+.nav-link {
+  color: var(--accent);
+}
+.active {
+  color: white !important;
+  text-decoration: underline;
 }
 </style>

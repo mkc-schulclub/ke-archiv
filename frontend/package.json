@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@types/crypto-js": "^4.1.2",
     "nuxt": "^3.7.3"
   },
   "dependencies": {
