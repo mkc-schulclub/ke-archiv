@@ -21,9 +21,6 @@ definePageMeta({
     layout: "admin",
 });
 let mode = ref("view")
-const popupClose = () => {
-    mode = false
-};
 </script>
 
 <style scoped>
