@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <ul id="navcontent" class="navbar-nav me-auto mb-2 mb-lg-0">
           <li v-for="(page, index) in pages" :key="index" class="nav-item">
-            <nuxt-link :to="`/${page.url}`" class="nav-link mx-0" :class="{ active: currentPage === page.title }" >
+            <nuxt-link :to="route.fullPath" class="nav-link mx-0" :class="{ active: currentPage === page.title }" @click="wait(page.url)">
                 {{ page.title }}
             </nuxt-link>
           </li>
@@ -18,6 +18,7 @@
 
 <script setup>
 const route = useRoute()
+const router = useRouter()
 const currentPage = computed(() => {
   return route.name.lastIndexOf("-") !== -1 ? route.name.substring(route.name.lastIndexOf("-") + 1) : "Dashboard"
 })
@@ -34,7 +35,19 @@ const pages = [
     title: "Users",
     url: `admin/Users`,
   },
-]
+];
+
+const waiting = ref(false);
+
+const wait = (url) => {
+  if (waiting.value == true) return
+  let path = url.substring(url.lastIndexOf("/") + 1) == "admin" ? "" : url.substring(url.lastIndexOf("/") + 1)
+  router.push(`/admin/${path}`)
+  waiting.value = true;
+  setTimeout(() => {
+    waiting.value = false;
+  }, 450);
+};
 </script>
 
 <style scoped>
