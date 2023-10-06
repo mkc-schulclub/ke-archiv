@@ -10,6 +10,7 @@ body {
   color: whitesmoke;
   font-family: 'YouTube Sans', sans-serif;
   font-family: 'YouTube Sans Dark', sans-serif;
+  font-display: swap;
 }
 
 .btn-primary {
