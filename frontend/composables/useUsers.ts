@@ -1,11 +1,11 @@
 import { ref, onMounted } from 'vue';
-const session = useCookie('session')
 
 export function useUsers() {
   let users = ref([]);
 
   const fetchData = async () => {
     try {
+      const session = useCookie('session')
       const response = await fetch("https://frog.lowkey.gay/vyralux/api/v1/user", {
         method: "GET",
         headers: {
