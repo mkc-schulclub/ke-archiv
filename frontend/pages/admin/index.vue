@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <transition>
+    <div>
     
-  </div>
+  </div>  
+  </transition>
 </template>
 
   <script setup>
