@@ -3,7 +3,7 @@
     <div class="popup card p-5">
       <a class="icon"><span class="close-button" @click="popping">&times;</span></a>
 
-      <form @submit.prevent="console.log(ausgabe)" v-if="ausgabe.tops">
+      <form @submit.prevent="addAusgabe()" v-if="ausgabe.tops">
         <h3>Neue Ausgabe hinzufügen</h3>
 
         <div class="row">
@@ -16,10 +16,12 @@
             <input type="text" placeholder="Artikel" v-model="top.title">
             <p><input type="text" placeholder="Author" v-model="top.author">
               <span>
-                <i class="fas fa-plus gray-plus-icon mx-1" v-if="index == ausgabe.tops.length - 1 && ausgabe.tops.length < 3"
+                <i class="fas fa-plus gray-plus-icon mx-1"
+                  v-if="index == ausgabe.tops.length - 1 && ausgabe.tops.length < 3"
                   @click="ausgabe.tops.push({ title: '', author: '' })">
                 </i>
-                <i class="fas fa-minus gray-minus-icon mx-1" v-if="index == ausgabe.tops.length - 1 && ausgabe.tops.length > 1"
+                <i class="fas fa-minus gray-minus-icon mx-1"
+                  v-if="index == ausgabe.tops.length - 1 && ausgabe.tops.length > 1"
                   @click="ausgabe.tops.splice(index, 1)">
                 </i>
               </span>
@@ -49,7 +51,16 @@ const ausgabe = ref({
   title: "",
   description: "",
   date: "",
+  url: "",
   tops: [
+    {
+      title: "",
+      author: "",
+    },
+    {
+      title: "",
+      author: "",
+    },
     {
       title: "",
       author: "",
@@ -73,80 +84,32 @@ let dev = false;
 const errorMsg = ref("");
 const statusMsg = ref("");
 
-async function login(username, password) {
-  if (!(username && password)) {
-    return (errorMsg.value = "Username oder Passwort fehlen");
-  }
-  if (!keyBase.value) {
-    getKeyBase()
-  }
-  else {
-    getSession(input.username, input.password)
-  }
-  function getKeyBase() {
-    statusMsg.value = "getting key"
-    fetch("https://frog.lowkey.gay/vyralux/api/v1/key", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+function addAusgabe() {
+  return console.log(ausgabe.value)
+  const data = JSON.stringify(ausgabe.value)
+  console.log(ausgabe)
+  fetch("https://frog.lowkey.gay/vyralux/api/v1/items", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      hjtrfs: CryptoJS.HmacSHA256(
+        data,
+        keyBase.value
+      ).toString(CryptoJS.enc.Hex),
+      ndcauth: session.value,
+    },
+    body: data,
+  })
+    .then((response) => {
+
     })
-      .then((response) => response.json())
-      .then((data) => {
-        keyBase.value = CryptoJS.SHA256(data["keyBase"]).toString(
-          CryptoJS.enc.Hex
-        );
-        statusMsg.value = "key saved"
-      })
-      .then(() => { getSession(input.username, input.password) })
-      .catch((error) => {
-        errorMsg.value = "Login fehlgeschlagen!";
-        statusMsg.value = "error while getting key"
-        console.error("Error fetching data:", error);
-      });
-  }
-  function getSession(username, password) {
-    const data = JSON.stringify({
-      name: username,
-      password: password,
+    .then(() => {
+
+    })
+    .catch((error) => {
+
     });
-    statusMsg.value = "getting session"
-    fetch("https://frog.lowkey.gay/vyralux/api/v1/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        hjtrfs: CryptoJS.HmacSHA256(data, keyBase.value).toString(
-          CryptoJS.enc.Hex
-        ),
-      },
-      body: data,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === 400) {
-          return (
-            errorMsg.value = "Login fehlgeschlagen",
-            statusMsg.value = "400 response"
-          );
-        }
-        const { sid } = data;
-        if (sid) {
-          statusMsg.value = "sucess"
-          session.value = sid;
-          router.push("/admin");
-        } else {
-          console.error("No session token generated");
-          statusMsg.value = "error while using session token"
-          errorMsg.value = "Login fehlgeschlagen. Bitte erneut versuchen.";
-        }
-      })
-      .catch((error) => {
-        errorMsg.value = "Login fehlgeschlagen!";
-        statusMsg.value = "error while getting session token"
-        console.error("Error fetching data:", error);
-      });
-  }
-}
+};
 </script>
 
 <script>

@@ -6,7 +6,7 @@ export function useAusgaben() {
   let error = ref(false)
   const router = useRouter()
   
-  const fetchData = async () => {
+  const fetchAusgaben = async () => {
     let tries = 0;
     try {
       const response = await fetch('https://frog.lowkey.gay/quaxly/api/v1/issues');
@@ -17,7 +17,7 @@ export function useAusgaben() {
       if (tries < 3 ) {
         tries++        
         console.info(`retrying to fetch... ${tries}/3`)
-        fetchData()
+        fetchAusgaben()
       }
       else {
         error = true
@@ -26,10 +26,11 @@ export function useAusgaben() {
   };
 
   onMounted(() => {
-    fetchData();
+    fetchAusgaben();
   });
   
   return {
+    fetchAusgaben,
     ausgaben,
     error,
   };
