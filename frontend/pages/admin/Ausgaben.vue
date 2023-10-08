@@ -8,12 +8,15 @@
 				</h1>
 			</div>
 			<div v-for="ausgabe in ausgaben">
-				{{ ausgabe.title }}
-				<div class="divider"></div>
+				<div class="parent row text-center">
+					<p class="col-lg">{{ ausgabe.title }}</p>
+					<i class="fas fa-pencil-alt hidden-child" @click="true"></i>
+					<div class="divider"></div>
+				</div>
 			</div>
-            <button class="btn btn-primary" @click.prevent="fetchAusgaben">Refetch</button>
+			<button class="btn btn-primary" @click.prevent="fetchAusgaben">Refetch</button>
 			<AdminAusgabeAdd v-if="mode == 'add'" @exit="mode = 'view'" />
-            <AdminAusgabeEdit v-if="mode == 'edit'" @exit="mode = 'view'" />
+			<AdminAusgabeEdit v-if="mode == 'edit'" @exit="mode = 'view'" />
 		</div>
 	</transition>
 </template>
@@ -24,6 +27,19 @@
 		layout: "admin",
 	});
 	let mode = ref("view");
+
+	const editAusgabe = ref({});
 </script>
 
-<style scoped></style>
+<style scoped>
+    .parent:hover {
+        background-color: var(--secondary);
+    }
+	.parent .hidden-child {
+		visibility: hidden;
+	}
+
+	.parent:hover .hidden-child {
+		visibility: visible;
+	}
+</style>

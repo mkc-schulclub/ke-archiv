@@ -10,6 +10,7 @@
             </nuxt-link>
           </li>
         </ul>
+        <button class="btn btn-success" @click="logout">Logout</button>
       </div>
     </nav>
     <slot />
@@ -48,6 +49,10 @@ const wait = (url) => {
     waiting.value = false;
   }, 450);
 };
+
+function logout() {
+  
+}
 </script>
 
 <style scoped>
