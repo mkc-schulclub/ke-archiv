@@ -1,7 +1,8 @@
 import { ref, onMounted } from 'vue';
+let users = ref([]);
+let hasUsers = ref(false)
 
 export function useUsers() {
-  let users = ref([]);
 
   const fetchData = async () => {
     try {
@@ -15,12 +16,14 @@ export function useUsers() {
       if (!response.ok) return
       const data = await response.json();
       users.value = data;
+      hasUsers.value = true
     } catch (error) {
       console.error("Fehler:", error);
     }
   };
 
   onMounted(() => {
+    if (hasUsers.value) return
     fetchData();
   });
 
