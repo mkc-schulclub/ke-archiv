@@ -1,7 +1,12 @@
 <template>
     <transition>
         <div>
-            <h1>Liste aller Nutzer</h1>
+            <div class="container">
+				<h1>
+					Liste aller Ausgaben
+					<a href="#" class="fas fa-plus gray-plus-icon" style="font-size: medium; text-decoration: none" @click="mode = 'add'"></a>
+				</h1>
+			</div>
             <div v-for="(user, index) in users" :key="index" class="row">
                 <div class="col-sm">
                     <h3>{{ user.name }}</h3>

@@ -12,7 +12,8 @@
 				<div class="divider"></div>
 			</div>
             <button class="btn btn-primary" @click.prevent="fetchAusgaben">Refetch</button>
-			<AdminAdd v-if="mode == 'add'" @exit="mode = 'view'" />
+			<AdminAusgabeAdd v-if="mode == 'add'" @exit="mode = 'view'" />
+            <AdminAusgabeEdit v-if="mode == 'edit'" @exit="mode = 'view'" />
 		</div>
 	</transition>
 </template>
