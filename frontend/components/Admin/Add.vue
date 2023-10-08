@@ -9,7 +9,7 @@
         <div class="row">
           <input type="text" placeholder="Titel" v-model="ausgabe.title">
           <input type="text" placeholder="Beschreibung" v-model="ausgabe.description">
-          <input type="date" placeholder="Titel" v-model="ausgabe.date">
+          <input type="date" placeholder="Titel" v-model="datum">
 
           <span>Featured Artikel:</span>
           <div v-for="(top, index) in ausgabe.tops" :key="index">
@@ -45,7 +45,7 @@
 
 <script setup>
 import CryptoJS from "crypto-js";
-const router = useRouter();
+let datum;
 
 const ausgabe = ref({
   title: "",
@@ -67,6 +67,9 @@ const ausgabe = ref({
     },
   ]
 })
+onBeforeMount(() => {
+  datum = ref(ausgabe.value.date.split("T")[0])
+})
 
 const keyBase = useCookie("key", {
   maxAge: 43200,
@@ -85,9 +88,9 @@ const errorMsg = ref("");
 const statusMsg = ref("");
 
 function addAusgabe() {
+  ausgabe.value.date = datum.value
   return console.log(ausgabe.value)
   const data = JSON.stringify(ausgabe.value)
-  console.log(ausgabe)
   fetch("https://frog.lowkey.gay/vyralux/api/v1/items", {
     method: "POST",
     headers: {

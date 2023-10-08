@@ -13,7 +13,6 @@ export function useAusgaben() {
       const data = await response.json();
       ausgaben.value = data;
       hasAusgaben.value = true
-      console.log("uhuh", hasAusgaben.value)
     } catch (error) {
       console.error('Error fetching ausgaben:', error);
       if (tries < 3 ) {
@@ -28,7 +27,6 @@ export function useAusgaben() {
   };
 
   onMounted(() => {
-    console.log(hasAusgaben.value)
     if (hasAusgaben.value) return
     fetchAusgaben();
   });
