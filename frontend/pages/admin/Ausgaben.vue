@@ -10,13 +10,13 @@
 			<div v-for="ausgabe in ausgaben">
 				<div class="parent row text-center">
 					<p class="col-lg">{{ ausgabe.title }}</p>
-					<i class="fas fa-pencil-alt hidden-child" @click="true"></i>
+					<a href="#" class="fas fa-pencil-alt hidden-child text-decoration-none" @click="edit(ausgabe)"></a>
 					<div class="divider"></div>
 				</div>
 			</div>
 			<button class="btn btn-primary" @click.prevent="fetchAusgaben">Refetch</button>
 			<AdminAusgabeAdd v-if="mode == 'add'" @exit="mode = 'view'" />
-			<AdminAusgabeEdit v-if="mode == 'edit'" @exit="mode = 'view'" />
+			<AdminAusgabeEdit v-if="mode == 'edit'" @exit="mode = 'view'" :ausgabe="editTarget"/>
 		</div>
 	</transition>
 </template>
@@ -28,7 +28,11 @@
 	});
 	let mode = ref("view");
 
-	const editAusgabe = ref({});
+	const editTarget = ref({});
+    function edit(target) {
+        editTarget.value = target
+        mode.value = 'edit'
+    }
 </script>
 
 <style scoped>
